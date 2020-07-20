@@ -1,0 +1,14 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #85dcbb;
+	color: #6b9080;
+}
+
+.todo-card {
+	background-color: #f7fff7;
+}
