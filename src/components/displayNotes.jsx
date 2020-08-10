@@ -1,5 +1,7 @@
 import React from "react";
 import DisplayNote from "./displayNote";
+import { connect } from "react-redux";
+import { addNote, changeNote } from "../redux";
 
 const DisplayNotes = ({ notes, handleStatus }) => {
 	return (
@@ -18,22 +20,7 @@ const DisplayNotes = ({ notes, handleStatus }) => {
 					{notes.length > 0 ? (
 						<ul className="list-group ">
 							{notes.map((note, index) => (
-								<DisplayNote
-									key={index}
-									note={note}
-									handleCheck={() =>
-										handleStatus({
-											id: note.id,
-											isCompleted: true,
-										})
-									}
-									handleDelete={() =>
-										handleStatus({
-											id: note.id,
-											isCompleted: false,
-										})
-									}
-								/>
+								<DisplayNote key={index} note={note} />
 							))}
 							<hr />
 						</ul>
@@ -46,4 +33,16 @@ const DisplayNotes = ({ notes, handleStatus }) => {
 	);
 };
 
-export default DisplayNotes;
+const mapStateToProps = (state) => {
+	return {
+		notes: state.notes,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		handleStatus: (e) => dispatch(addNote(e)),
+		changeNote: (note) => dispatch(changeNote(note)),
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayNotes);

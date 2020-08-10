@@ -1,0 +1,8 @@
+{
+    "gitlens.views.lineHistory.enabled": false,
+    "gitlens.views.lineHistory.avatars": false,
+    "gitlens.recentChanges.highlight.locations": [
+        "line",
+        "overview"
+    ]
+}
